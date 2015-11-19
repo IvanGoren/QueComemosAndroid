@@ -39,9 +39,9 @@ public class RepoRecetas {
      *   Inicializacion Juego de Datos
      */
     private void init() {
-        RepoRecetas.getInstance().agregarReceta(new Receta("Flan","Facil","Siempre","Azucar,Leche,Huevo","Google"));
-        RepoRecetas.getInstance().agregarReceta(new Receta("Flan","Facil","Siempre","Azucar,Leche,Huevo","Google"));
-        RepoRecetas.getInstance().agregarReceta(new Receta("Flan","Facil","Siempre","Azucar,Leche,Huevo","Google"));
+        RepoRecetas.getInstance().agregarReceta(new Receta("Flan","Facil","Siempre","Azucar,Leche,Huevo","Paso1,paso2,paso3"));
+        RepoRecetas.getInstance().agregarReceta(new Receta("Milanesa de pollo","Medio","Verano","1/2 kg de suprema de pollo,Pan rayado,6 Huevos, 1/2 Lts. de Aceite","Paso1, paso2"));
+        RepoRecetas.getInstance().agregarReceta(new Receta("Gelatina","Facil","Primavera","1 paquete gelatina","Paso1 paso2, paso3, paso4"));
     }
 
     public List<Receta> getRecetas(String titulo) {
