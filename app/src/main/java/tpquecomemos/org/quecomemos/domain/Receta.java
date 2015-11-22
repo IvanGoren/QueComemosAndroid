@@ -1,6 +1,8 @@
 package tpquecomemos.org.quecomemos.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ivan on 17/11/2015.
@@ -12,6 +14,7 @@ public class Receta implements Serializable {
     String temporada;
     String instrucciones;
     String ingredientes;
+    List<Ingrediente> ingredientesList;
 
     public Receta(String nombre, String dificultad, String temporada, String ingredientes, String instrucciones) {
         this.nombre = nombre;
@@ -19,6 +22,7 @@ public class Receta implements Serializable {
         this.temporada = temporada;
         this.instrucciones = instrucciones;
         this.ingredientes = ingredientes;
+        ingredientesList = new ArrayList<Ingrediente>();
     }
 
     public String getDificultad() {
@@ -73,6 +77,10 @@ public class Receta implements Serializable {
         return nombre;
     }
 
+    public void addIngrediente(Ingrediente ingrediente){
+        ingredientesList.add(ingrediente);
+    }
 
+    public List<Ingrediente> getIngredientesList(){ return ingredientesList;}
 
 }

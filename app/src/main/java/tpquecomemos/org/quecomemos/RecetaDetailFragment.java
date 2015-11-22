@@ -1,15 +1,20 @@
 package tpquecomemos.org.quecomemos;
 
 import android.app.Activity;
+import android.support.annotation.LayoutRes;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import tpquecomemos.org.quecomemos.adapter.IngredienteAdapter;
+import tpquecomemos.org.quecomemos.domain.Ingrediente;
 import tpquecomemos.org.quecomemos.domain.Receta;
 import tpquecomemos.org.quecomemos.dummy.DummyContent;
 import tpquecomemos.org.quecomemos.repo.RepoRecetas;
@@ -58,9 +63,10 @@ public class RecetaDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_receta_detail, container, false);
 
+        View rootView = inflater.inflate(R.layout.fragment_receta_detail, container, false);
         if (receta != null) {
+            ((ListView) rootView.findViewById(R.id.list_ingredientes)).setAdapter(new IngredienteAdapter(getActivity(),receta.getIngredientesList()));
             ((TextView) rootView.findViewById(R.id.receta_dificultad)).setText(receta.getDificultad());
             ((TextView) rootView.findViewById(R.id.receta_temporada)).setText(receta.getTemporada());
             ((TextView) rootView.findViewById(R.id.receta_ingredientes)).setText(receta.getIngredientes());

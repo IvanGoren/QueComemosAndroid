@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
 
@@ -34,6 +34,13 @@
         android:padding="16dp"
         android:textIsSelectable="true"
         tools:context=".RecetaDetailFragment" />
+
+    <ListView
+        android:id="@+id/list_ingredientes"
+        android:background="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
