@@ -3,16 +3,25 @@ package tpquecomemos.org.quecomemos;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.List;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.GsonConverterFactory;
+import retrofit.Response;
+import retrofit.Retrofit;
 import tpquecomemos.org.quecomemos.adapter.RecetaAdapter;
 import tpquecomemos.org.quecomemos.domain.Receta;
 import tpquecomemos.org.quecomemos.dummy.DummyContent;
 import tpquecomemos.org.quecomemos.repo.RepoRecetas;
+import tpquecomemos.org.quecomemos.service.RecetaService;
 
 /**
  * A list fragment representing a list of Recetas. This fragment
@@ -25,6 +34,7 @@ import tpquecomemos.org.quecomemos.repo.RepoRecetas;
  */
 public class RecetaListFragment extends ListFragment {
 
+    RecetaService recetaService;
     /**
      * The serialization (saved instance state) Bundle key representing the
      * activated item position. Only used on tablets.
@@ -68,9 +78,22 @@ public class RecetaListFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setListAdapter(new RecetaAdapter(
-                getActivity(),
-                RepoRecetas.getInstance().getRecetas(null, 10)));
+
+        // IMPORTANTE
+        // Por un bug de retrofit 2.0, la BASE_URL debe tener una / al final
+        // y la dirección del service debe comenzar sin /, como un path relativo
+        String BASE_URL = "http://192.168.1.8:9000/quecomemos/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+       recetaService = retrofit.create(RecetaService.class);
+        this.buscarRecetas();
+//        setListAdapter(new RecetaAdapter(
+//               getActivity(),
+//               RepoRecetas.getInstance().getRecetas(null, 10)));
 
     }
 
@@ -137,5 +160,29 @@ public class RecetaListFragment extends ListFragment {
         }
 
         mActivatedPosition = position;
+    }
+
+    private void buscarRecetas() {
+        Call<List<Receta>> recetaCall = recetaService.getRecetas();
+
+        recetaCall.enqueue(new Callback<List<Receta>>() {
+            @Override
+            public void onResponse(Response<List<Receta>> response, Retrofit retrofit) {
+                List<Receta> recetas = response.body();
+
+                Log.w("QueComemosTpApp", "EEEEEERRRRROOOORRRRR PROPIO!!! " + response.body().toString());
+
+                setListAdapter(new RecetaAdapter(
+                        getActivity(),
+                        recetas));
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                t.printStackTrace();
+                Log.e("QueComemosTpApp", t.getMessage());
+            }
+        });
     }
 }

@@ -6,32 +6,32 @@ import java.io.Serializable;
  * Created by Ivan on 19/11/2015.
  */
 public class Ingrediente implements Serializable {
-    String nombreIngrediente;
-    int cantidad;
+    String nombre;
+    int cantidadEnGr;
 
     public Ingrediente(String nombreIngrediente, int cantidad){
-        this.nombreIngrediente = nombreIngrediente;
-        this.cantidad = cantidad;
+        this.nombre = nombreIngrediente;
+        this.cantidadEnGr = cantidad;
     }
 
-    public String getNombreIngrediente() {
-        return nombreIngrediente;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreIngrediente(String dificultad) {
-        this.nombreIngrediente = nombreIngrediente;
+    public void setNombre(String dificultad) {
+        this.nombre = nombre;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getCantidadEnGr() {
+        return cantidadEnGr;
     }
 
     @Override
     public String toString(){
-        return this.nombreIngrediente;
+        return this.nombre;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setCantidadEnGr(int cantidadEnGr) {
+        this.cantidadEnGr = cantidadEnGr;
     }
 }

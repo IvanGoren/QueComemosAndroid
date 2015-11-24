@@ -31,10 +31,10 @@ public class IngredienteAdapter extends ArrayAdapter<Ingrediente> {
         final Ingrediente ingrediente = getItem(position);
 
         TextView tvNombre = (TextView) rowView.findViewById(R.id.lblNombreIngrediente);
-        tvNombre.setText(ingrediente.getNombreIngrediente());
+        tvNombre.setText(ingrediente.getNombre());
 
         TextView tvCantidad = (TextView) rowView.findViewById(R.id.lblCantidad);
-        tvCantidad.setText("" + ingrediente.getCantidad());
+        tvCantidad.setText("" + ingrediente.getCantidadEnGr());
         return rowView;
     }
 }

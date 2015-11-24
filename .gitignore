@@ -8,6 +8,7 @@
 /.idea/.name
 .DS_Store
 /build
+/app/build
 /captures
 
 QueComemos.iml

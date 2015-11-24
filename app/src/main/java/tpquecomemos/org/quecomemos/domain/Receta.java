@@ -14,6 +14,7 @@ public class Receta implements Serializable {
     String temporada;
     String instrucciones;
     String ingredientes;
+    int calorias;
     List<Ingrediente> ingredientesList;
 
     List<Condimento> condimentosList;
