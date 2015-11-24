@@ -86,7 +86,7 @@ public class RecetaDetailFragment extends Fragment {
 
             ((TextView) rootView.findViewById(R.id.receta_dificultad)).setText(receta.getDificultad());
             ((TextView) rootView.findViewById(R.id.receta_temporada)).setText(receta.getTemporada());
-            ((TextView) rootView.findViewById(R.id.receta_ingredientes)).setText(receta.getIngredientes());
+            ((TextView) rootView.findViewById(R.id.receta_ingredientes)).setText(receta.getIngredientesX());
             ((TextView) rootView.findViewById(R.id.receta_isntrucciones)).setText(receta.getInstrucciones());
         }
 

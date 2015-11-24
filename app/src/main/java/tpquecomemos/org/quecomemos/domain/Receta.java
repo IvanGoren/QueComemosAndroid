@@ -13,20 +13,22 @@ public class Receta implements Serializable {
     String dificultad;
     String temporada;
     String instrucciones;
-    String ingredientes;
+    String ingredientesX;
     int calorias;
     List<Ingrediente> ingredientesList;
+    List<Ingrediente> ingredientes;
 
     List<Condimento> condimentosList;
     List<CondicionPreexistente> condicionesPreexistentesList;
 
-    public Receta(String nombre, String dificultad, String temporada, String ingredientes, String instrucciones) {
+    public Receta(String nombre, String dificultad, String temporada, String ingredientesX, String instrucciones) {
         this.nombre = nombre;
         this.dificultad = dificultad;
         this.temporada = temporada;
         this.instrucciones = instrucciones;
-        this.ingredientes = ingredientes;
+        this.ingredientesX = ingredientesX;
         ingredientesList = new ArrayList<Ingrediente>();
+
 
         condimentosList = new ArrayList<Condimento>();
         condicionesPreexistentesList = new ArrayList<CondicionPreexistente>();
@@ -64,12 +66,12 @@ public class Receta implements Serializable {
         this.temporada = temporada;
     }
 
-    public String getIngredientes() {
-        return ingredientes;
+    public String getIngredientesX() {
+        return ingredientesX;
     }
 
-    public void setIngredientes(String ingredientes) {
-        this.ingredientes = ingredientes;
+    public void setIngredientesS(String ingredientes) {
+        this.ingredientesX = ingredientes;
     }
 
     public String getInstrucciones() {
@@ -89,6 +91,7 @@ public class Receta implements Serializable {
     }
 
     public List<Ingrediente> getIngredientesList(){ return ingredientesList;}
+    public List<Ingrediente> getIngredientes(){ return ingredientesList;}
 
     public void addCondimento(Condimento condimento){
         condimentosList.add(condimento);
